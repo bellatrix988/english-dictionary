@@ -20,6 +20,11 @@ export class WordsListComponent implements OnInit {
     .then(listOfWords => this.listOfWords = listOfWords);
   }
 
+  removeWord(word: EngDictionary): void{
+    this.engDicService
+        .deleteWords(word);
+    this.getWords();
+  }
   ngOnInit(): void {
     this.getWords();
   }
