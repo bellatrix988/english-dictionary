@@ -17,9 +17,10 @@ export class EngDictionaryService {
     //TODO
   }
 
-  addWord(): EngDictionary{
-    //TODO
-    return;
+  addWord(word: EngDictionary): void{
+    this.getWords()
+        .then(listWords => listWords.push(word));
+    // return;
   }
 
 }

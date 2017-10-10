@@ -1,6 +1,6 @@
 import { EngDictionary } from './eng-dictionary';
 
-export const DATA_DICTIONARY: EngDictionary[] = [
+export let DATA_DICTIONARY: EngDictionary[] = [
   {id: 1, source: 'Sky', result: 'Небо'},
   {id: 2, source: 'Dictionary', result: 'Небо'},
   {id: 3, source: 'Music', result: 'Небо'},

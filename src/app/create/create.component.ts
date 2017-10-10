@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+// import { EngDictionary } from '../eng-dictionary';
+import { EngDictionaryService } from '../eng-dictionary-service.service';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -7,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private engDicService: EngDictionaryService) { }
+
+  addWordToList(src: string, res: string ): void{
+    let word = { id: 8, source: src, result: res };
+    this.engDicService.addWord(word);
+  }
 
   ngOnInit() {
   }

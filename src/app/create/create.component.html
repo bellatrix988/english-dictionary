@@ -1,6 +1,3 @@
-<p>
-  create works!
-</p>
-<input type="text">
-<input type="text">
-<button>Add</button>
+<input type="text" [(ngModel)]="src">
+<input type="text" [(ngModel)]="res">
+<button (click)="addWordToList( src, res)">Add</button>
