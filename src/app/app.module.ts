@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, FormBuilder }    from '@angular/forms';
 import { RouterModule, Routes }   from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -8,13 +8,17 @@ import { EngDictionaryService } from './eng-dictionary-service.service';
 import { CreateComponent } from './create/create.component';
 import { WordsListComponent } from './words-list/words-list.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BlackListDirective } from './black-list.directive';
+import { TestEngDictionaryComponent } from './test-eng-dictionary/test-eng-dictionary.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateComponent,
-    WordsListComponent
+    WordsListComponent,
+    BlackListDirective,
+    TestEngDictionaryComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
     RouterModule,
     AppRoutingModule
   ],
-  providers: [EngDictionaryService],
+  providers: [EngDictionaryService, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

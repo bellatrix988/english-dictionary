@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
-// import { EngDictionary } from '../eng-dictionary';
 import { EngDictionaryService } from '../eng-dictionary-service.service';
 
 @Component({
@@ -9,16 +9,24 @@ import { EngDictionaryService } from '../eng-dictionary-service.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+  createForm: FormGroup;
 
   constructor(
-    private engDicService: EngDictionaryService) { }
+    private engDicService: EngDictionaryService,
+    fb: FormBuilder) {
+      this.createForm = fb.group({
+      'src' : [null, Validators.required, Validators.pattern("[a-zA-Z][a-z]+")],
+      'res': [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10)])],
+    })
+  }
 
   addWordToList(src: string, res: string ): void{
     let word = { id: 8, source: src, result: res };
     this.engDicService.addWord(word);
   }
 
-  ngOnInit() {
+  ngOnInit():void {
+
   }
 
 }

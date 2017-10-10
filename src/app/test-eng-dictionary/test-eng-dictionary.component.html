@@ -1,0 +1,12 @@
+<div align="center" *ngIf="currentWord == undefined"><button class="btn" (click)="startTest(0)" >Start</button></div>
+<div class="content" *ngIf="currentWord != undefined " align="center">
+  <form action="">
+    <p>{{currentWord.source}}</p>
+    <button *ngFor="let item of currentVersions" (click)="checkPair(currentWord,item)">
+      {{item.result}}
+    </button>
+  </form>
+  <p *ngIf="flagOfEnd == true">
+    <span>{{countRightAnswer}}</span>/<span>{{countAllClick}}</span>
+  </p>
+</div>

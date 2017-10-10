@@ -3,10 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { WordsListComponent } from './words-list/words-list.component';
 import { CreateComponent } from './create/create.component';
+import { TestEngDictionaryComponent } from './test-eng-dictionary/test-eng-dictionary.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'list',  component: WordsListComponent },
+  { path: 'test', component: TestEngDictionaryComponent },
   { path: 'create',component: CreateComponent }
 ];
 
