@@ -10,6 +10,7 @@ import { WordsListComponent } from './words-list/words-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BlackListDirective } from './black-list.directive';
 import { TestEngDictionaryComponent } from './test-eng-dictionary/test-eng-dictionary.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TestEngDictionaryComponent } from './test-eng-dictionary/test-eng-dicti
     CreateComponent,
     WordsListComponent,
     BlackListDirective,
-    TestEngDictionaryComponent
+    TestEngDictionaryComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

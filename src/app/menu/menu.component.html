@@ -1,0 +1,14 @@
+<nav class="navbar navbar-default">
+  <div class="navbar-header">
+    <button (click)="toggleMenu()" class="btn btn-link btn-lg " type="button">
+      <span class="glyphicon glyphicon-align-justify"></span>
+    </button>
+  </div>
+</nav>
+<div *ngIf="toggleStateShow" class="sidebar">
+  <ul class="nav nav-pills nav-stacked">
+    <li><a routerLink='/list'>Список</a></li>
+    <li><a routerLink='/create'>Добавить слово</a></li>
+    <li><a routerLink='/test'>Тестирование</a></li>
+  </ul>
+</div>

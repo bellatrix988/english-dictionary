@@ -1,15 +1,17 @@
-<ul class="list-group">
-  <li>
-    <p class="col-xs-5">Source</p>
-    <p class="col-xs-5">Result</p>
-    <p class="col-xs-2">delete</p>
-  </li>
-  <hr>
-  <li *ngFor="let word of listOfWords">
+<div class="container">
+  <ul class="list-group">
+    <li>
+      <p class="col-xs-5">Source</p>
+      <p class="col-xs-5">Result</p>
+      <p class="col-xs-2">delete</p>
+    </li>
+    <hr>
+    <li *ngFor="let word of listOfWords">
       <p class="col-xs-5 ">{{word.source}}</p>
       <p class="col-xs-5 ">{{word.result}}</p>
       <p class="col-xs-2 ">
-          <button (click)="removeWord(word) ">X</button>
+        <button (click)="removeWord(word) ">X</button>
       </p>
-  </li>
-</ul>
+    </li>
+  </ul>
+</div>
