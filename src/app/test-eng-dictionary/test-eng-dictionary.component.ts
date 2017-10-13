@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { EngDictionary } from '../eng-dictionary';
 import { EngDictionaryService } from '../eng-dictionary-service.service';
 
@@ -15,44 +14,56 @@ export class TestEngDictionaryComponent implements OnInit {
   currentWord: EngDictionary;
   currentVersions: EngDictionary[] = [];
 
-  countRightAnswer: number = 0;
-  countAllClick: number = 0;
-  messageOfError: string = "";
+  countRightAnswer: number;
+  countAllClick: number;
+  messageOfError: string;
 
-  flagOfEnd: boolean = false;
-  constructor(
+  flagOfEnd: boolean;
+  constructor (
       private engDicService: EngDictionaryService ) { }
 
   startTest( n: number): void {
 
-    if(this.listOfPairs.length < 20 )
-      this.messageOfError = "Excuse me, the dictionary has smoll vocabulary. Add words, please!";
-    else{
+    if (this.listOfPairs.length < 20 ) {
+      this.messageOfError = 'Excuse me, the dictionary has smoll vocabulary. Add words, please!';
+    } else {
+
       this.currentWord = this.listOfPairs[n];
       this.currentVersions = [this.currentWord];
-      while (this.currentVersions.length < 6){
-        let obj = this.listOfPairs[Math.floor(Math.random() * this.listOfPairs.length)];
-        if(this.currentVersions.indexOf(obj) == -1)
+
+      while (this.currentVersions.length < 6) {
+        const obj = this.listOfPairs[Math.floor(Math.random() * this.listOfPairs.length)];
+        if (this.currentVersions.indexOf(obj) === -1) {
           this.currentVersions.push(obj);
+        }
       }
-      this.currentVersions.sort((a,b) => b.id - a.id);
+      this.currentVersions.sort((a, b) => b.id - a.id);
       this.currentVersions.reverse();
     }
   }
 
   checkPair(source: EngDictionary, version: EngDictionary): void {
-    let res = source.id === version.id;
+    const res = source.id === version.id;
     this.countAllClick++;
-    if (res)
+    if (res) {
       this.countRightAnswer++;
-    this.flagOfEnd = (this.countAllClick == this.listOfPairs.length);
-    console.log(this.countAllClick + ' ' + this.listOfPairs.length + ' ' + this.flagOfEnd);
-    if(!this.flagOfEnd)
+    }
+
+    this.flagOfEnd = (this.countAllClick === this.listOfPairs.length);
+
+    if (!this.flagOfEnd) {
       this.startTest(this.countAllClick);
+    }
   }
 
   ngOnInit() {
+    this.countAllClick = 0;
+    this.countRightAnswer = 0;
+    this.messageOfError = '';
+    this.currentWord = undefined;
+    this.currentVersions = undefined;
+    this.flagOfEnd = false;
     this.engDicService.getWords()
-                      .then(list => this.listOfPairs = list.slice(0,20));
+                      .then(list => this.listOfPairs = list.slice(0, 20) );
   }
 }

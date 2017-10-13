@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  toggleStateShow: boolean = false;
+  toggleStateShow: boolean;
   toggleMenu(): void {
     this.toggleStateShow = !this.toggleStateShow;
   }

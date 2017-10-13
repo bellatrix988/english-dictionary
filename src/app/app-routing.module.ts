@@ -1,4 +1,4 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { WordsListComponent } from './words-list/words-list.component';
@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'list',  component: WordsListComponent },
   { path: 'test', component: TestEngDictionaryComponent },
-  { path: 'create',component: CreateComponent, canDeactivate: [CanDeactivateGuardService]}
+  { path: 'create', component: CreateComponent, canDeactivate: [CanDeactivateGuardService]}
 ];
 
 @NgModule({

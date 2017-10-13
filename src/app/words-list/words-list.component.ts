@@ -11,7 +11,7 @@ import { EngDictionary } from '../eng-dictionary';
 export class WordsListComponent implements OnInit {
   listOfWords: EngDictionary[];
 
-  constructor(
+  constructor (
     private engDicService: EngDictionaryService) { }
 
   getWords(): void {
@@ -20,7 +20,7 @@ export class WordsListComponent implements OnInit {
     .then(listOfWords => this.listOfWords = listOfWords);
   }
 
-  removeWord(word: EngDictionary): void{
+  removeWord(word: EngDictionary): void {
     this.engDicService
         .deleteWords(word);
     this.getWords();

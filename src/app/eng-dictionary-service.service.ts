@@ -9,21 +9,21 @@ export class EngDictionaryService {
 
   constructor() { }
 
-  getWords(): Promise<EngDictionary[]>{
+  getWords(): Promise<EngDictionary[]> {
     return Promise.resolve(DATA_DICTIONARY);
   }
 
-  getWordById(id: number): Promise<EngDictionary>{
+  getWordById(id: number): Promise<EngDictionary> {
     return this.getWords()
                .then(listOfWords => listOfWords.find(word => word.id === id));
   }
 
   deleteWords(word: EngDictionary): void {
     this.getWords()
-        .then(self => self.splice(self.findIndex(w => w.id === word.id),1));
+        .then(self => self.splice(self.findIndex(w => w.id === word.id), 1));
   }
 
-  addWord(word: EngDictionary): void{
+  addWord(word: EngDictionary): void {
     this.getWords()
         .then(listWords => listWords.push(word));
   }
