@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
-import { Router }            from '@angular/router';
+import { FormGroup, FormControl, FormBuilder, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+import { Router, ActivatedRoute }            from '@angular/router';
 import { EngDictionaryService } from '../eng-dictionary-service.service';
 
 @Component({
@@ -11,20 +11,17 @@ import { EngDictionaryService } from '../eng-dictionary-service.service';
   // directives: [FORM_DIRECTIVES]
 })
 
-export class CreateComponent implements OnDestroy {
-  createForm: FormGroup;
+export class CreateComponent implements OnInit {
+  createForm: NgForm;
   message: string;
   flagSubmit: boolean = false;
   location: Location;
 
   constructor(
     private engDicService: EngDictionaryService,
-    private router: Router
-    ) {
-      // this.createForm = fb.group({
-      // 'src' : [null, Validators.required, Validators.pattern("[a-zA-Z][a-z]+")],
-      // 'res': [null, Validators.compose([Validators.required])]})
-  }
+    private router: Router,
+    private route: ActivatedRoute
+    ) {}
 
   addWordToList(src: string, res: string ): void{
     let n = 0;
@@ -32,22 +29,21 @@ export class CreateComponent implements OnDestroy {
                       .then(list => n = list.length);
     let word = { id: n+1, source: src, result: res };
     this.engDicService.addWord(word);
+
     this.message = '[ ' + src + ' - ' + res + ' ] ' + 'successfully added!';
     this.flagSubmit = true;
   }
 
-    showConfirm() {
-    if (window.confirm('Есть несохраненные изменения. Удалить их?')){
-      console.log('ok');
-    }
-    else{
-      let link = ["/create"];
-      this.router.navigate(link);
-    }
+  ngOnInit():void {
+    console.log(this.route.snapshot);
   }
 
-  ngOnDestroy():void{
-    if(!this.flagSubmit)
-      this.showConfirm();
+  canDeactivate() {
+
+      if ( !this.flagSubmit ) {
+        return window.confirm('Есть несохраненные изменения. Удалить их?');
+      }
+
+      return true;
   }
 }

@@ -1,10 +1,10 @@
 <div class="container">
   <h1>Add word</h1>
-  <form #form="ngForm">
+  <form #createForm="ngForm">
     <div class="form-group">
       <label>Source</label>
       <input type="text" (ngModel)="src" class="form-control" name="src" #src="ngModel"
-      pattern="^[a-zA-Z0-9_.]+$" required >
+      pattern="^[a-zA-Z0-9_.\s]+$" required >
     </div>
     <div [hidden]=" src.valid || src.pristine"  class="alert alert-danger">
       Source is required
@@ -17,7 +17,7 @@
     <div [hidden]=" res.valid || res.pristine" class="alert alert-danger">
       Result is required
     </div>
-    <button type="submit" [disabled]=" !form.valid " (click)="addWordToList( src, res)" class="btn btn-success">Add</button>
+    <button type="submit" [disabled]=" !createForm.valid " (click)="addWordToList( src, res)" class="btn btn-success">Add</button>
     <div [hidden] =" message == undefined " class="alert alert-success">
         {{message}}
     </div>

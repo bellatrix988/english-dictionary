@@ -27,5 +27,4 @@ export class EngDictionaryService {
     this.getWords()
         .then(listWords => listWords.push(word));
   }
-
 }

@@ -10,7 +10,7 @@ import { WordsListComponent } from './words-list/words-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TestEngDictionaryComponent } from './test-eng-dictionary/test-eng-dictionary.component';
 import { MenuComponent } from './menu/menu.component';
-
+import { CanDeactivateGuardService } from './can-deactivate-guard.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { MenuComponent } from './menu/menu.component';
     RouterModule,
     AppRoutingModule
   ],
-  providers: [EngDictionaryService, FormBuilder],
+  providers: [EngDictionaryService, FormBuilder, CanDeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
