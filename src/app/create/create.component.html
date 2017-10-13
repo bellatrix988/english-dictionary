@@ -3,18 +3,20 @@
   <form #createForm="ngForm">
     <div class="form-group">
       <label>Source</label>
-      <input type="text" (ngModel)="src" class="form-control" name="src" #src="ngModel"
-      pattern="^[a-zA-Z0-9_.\s]+$" required >
+      <input type="text" [(ngModel)]="src" class="form-control" name="src"
+      pattern="^[a-zA-Z0-9_.\s]+$" required #source="ngModel">
     </div>
-    <div [hidden]=" src.valid || src.pristine"  class="alert alert-danger">
+     <!-- #src="ngModel" -->
+    <div [hidden]=" source.valid || source.pristine"  class="alert alert-danger">
       Source is required
     </div>
-    <div class="form-group">
+
+    <div class="form-group" >
       <label for="res">Result</label>
-      <input type="text" (ngModel)="res" class="form-control" name="res" id="res" #res=ngModel
-      pattern="^[a-zA-Z0-9_.]+$" required>
+      <input type="text" [(ngModel)]="res" class="form-control" name="res" id="res"
+      pattern="^[a-zA-Z0-9_.]+$" required #result="ngModel">
     </div>
-    <div [hidden]=" res.valid || res.pristine" class="alert alert-danger">
+    <div [hidden]=" result.valid || result.pristine" class="alert alert-danger">
       Result is required
     </div>
     <button type="submit" [disabled]=" !createForm.valid " (click)="addWordToList( src, res)" class="btn btn-success">Add</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output,  EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute }            from '@angular/router';
 import { EngDictionaryService } from '../eng-dictionary-service.service';
@@ -12,10 +12,12 @@ import { EngDictionaryService } from '../eng-dictionary-service.service';
 })
 
 export class CreateComponent implements OnInit {
-  createForm: NgForm;
   message: string;
   flagSubmit: boolean = false;
   location: Location;
+
+  src: string;
+  res: string;
 
   constructor(
     private engDicService: EngDictionaryService,
@@ -35,12 +37,12 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit():void {
-    console.log(this.route.snapshot);
+
   }
 
   canDeactivate() {
 
-      if ( !this.flagSubmit ) {
+      if ( !this.flagSubmit && (this.src.length != 0  && this.res.length != 0 ) ) {
         return window.confirm('Есть несохраненные изменения. Удалить их?');
       }
 
