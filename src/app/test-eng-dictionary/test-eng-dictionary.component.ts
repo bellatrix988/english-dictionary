@@ -17,18 +17,26 @@ export class TestEngDictionaryComponent implements OnInit {
 
   countRightAnswer: number = 0;
   countAllClick: number = 0;
+  messageOfError: string = "";
 
   flagOfEnd: boolean = false;
   constructor(
       private engDicService: EngDictionaryService ) { }
 
-  startTest( n: number): void{
-    this.currentWord = this.listOfPairs[n];
-    this.currentVersions = [this.currentWord];
-    while (this.currentVersions.length < 6){
-      let obj = this.listOfPairs[Math.floor(Math.random() * this.listOfPairs.length)];
-      if(this.currentVersions.indexOf(obj) == -1)
-        this.currentVersions.push(obj);
+  startTest( n: number): void {
+
+    if(this.listOfPairs.length < 20 )
+      this.messageOfError = "Excuse me, the dictionary has smoll vocabulary. Add words, please!";
+    else{
+      this.currentWord = this.listOfPairs[n];
+      this.currentVersions = [this.currentWord];
+      while (this.currentVersions.length < 6){
+        let obj = this.listOfPairs[Math.floor(Math.random() * this.listOfPairs.length)];
+        if(this.currentVersions.indexOf(obj) == -1)
+          this.currentVersions.push(obj);
+      }
+      this.currentVersions.sort((a,b) => b.id - a.id);
+      this.currentVersions.reverse();
     }
   }
 
@@ -37,8 +45,8 @@ export class TestEngDictionaryComponent implements OnInit {
     this.countAllClick++;
     if (res)
       this.countRightAnswer++;
-
     this.flagOfEnd = (this.countAllClick == this.listOfPairs.length);
+    console.log(this.countAllClick + ' ' + this.listOfPairs.length + ' ' + this.flagOfEnd);
     if(!this.flagOfEnd)
       this.startTest(this.countAllClick);
   }

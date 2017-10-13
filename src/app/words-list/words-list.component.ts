@@ -29,8 +29,4 @@ export class WordsListComponent implements OnInit {
     this.getWords();
   }
 
-  // gotoList(): void{
-  //    this.router.navigate(['/list']);
-  // }
-
 }

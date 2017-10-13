@@ -1,12 +1,20 @@
-<div align="center" *ngIf="currentWord == undefined"><button class="btn" (click)="startTest(0)" >Start</button></div>
-<div class="content" *ngIf="currentWord != undefined " align="center">
-  <form action="">
-    <p>{{currentWord.source}}</p>
-    <button *ngFor="let item of currentVersions" (click)="checkPair(currentWord,item)">
-      {{item.result}}
-    </button>
-  </form>
-  <p *ngIf="flagOfEnd == true">
-    <span>{{countRightAnswer}}</span>/<span>{{countAllClick}}</span>
-  </p>
+<div *ngIf="messageOfError.length != 0" class="alert alert-danger">
+  {{messageOfError}}
+</div>
+<div *ngIf="messageOfError.length == 0" >
+  <div align="center " *ngIf="currentWord == undefined ">
+    <button class="btn btn-lg " (click)="startTest(0) ">Start</button>
+  </div>
+  <div class="content " *ngIf=" currentWord != undefined && flagOfEnd === false " align="center ">
+    <form >
+      <h3>{{currentWord.source}}</h3>
+      <button class="btn btn-link " *ngFor="let item of currentVersions " (click)="checkPair(currentWord,item) ">
+        <h4>  {{item.result}}</h4>
+      </button>
+    </form>
+  </div>
+</div>
+<div *ngIf=" flagOfEnd == true ">
+  <h1>Your result:
+    <span>{{countRightAnswer}}</span>/<span>{{countAllClick}}</span></h1>
 </div>

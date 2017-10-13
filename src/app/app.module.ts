@@ -8,7 +8,6 @@ import { EngDictionaryService } from './eng-dictionary-service.service';
 import { CreateComponent } from './create/create.component';
 import { WordsListComponent } from './words-list/words-list.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BlackListDirective } from './black-list.directive';
 import { TestEngDictionaryComponent } from './test-eng-dictionary/test-eng-dictionary.component';
 import { MenuComponent } from './menu/menu.component';
 
@@ -18,7 +17,6 @@ import { MenuComponent } from './menu/menu.component';
     AppComponent,
     CreateComponent,
     WordsListComponent,
-    BlackListDirective,
     TestEngDictionaryComponent,
     MenuComponent
   ],
