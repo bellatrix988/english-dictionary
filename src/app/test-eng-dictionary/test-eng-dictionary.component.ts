@@ -22,10 +22,10 @@ export class TestEngDictionaryComponent implements OnInit {
   constructor (
       private engDicService: EngDictionaryService ) { }
 
-  startTest( n: number): void {
+  startTest(n: number): void {
 
-    if (this.listOfPairs.length < 20 ) {
-      this.messageOfError = 'Excuse me, the dictionary has smoll vocabulary. Add words, please!';
+    if (this.listOfPairs.length < 20) {
+      this.messageOfError = 'Excuse me, the dictionary has small vocabulary. Add words, please!';
     } else {
 
       this.currentWord = this.listOfPairs[n];

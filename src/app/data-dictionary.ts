@@ -19,7 +19,7 @@ export let DATA_DICTIONARY: EngDictionary[] = [
   {id: 15, source: 'a Chair', result: 'Стул'},
   {id: 16, source: 'a Key', result: 'Ключ'},
   {id: 17, source: 'a Directory', result: 'Директория/Каталог'},
-  {id: 18, source: 'Smoll', result: 'Маленький'},
+  {id: 18, source: 'Small', result: 'Маленький'},
   {id: 19, source: 'Middle', result: 'Средний'},
   {id: 20, source: 'Large', result: 'Большой'}
 ];

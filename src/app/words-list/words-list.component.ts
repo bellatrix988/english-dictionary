@@ -16,8 +16,8 @@ export class WordsListComponent implements OnInit {
 
   getWords(): void {
     this.engDicService
-    .getWords()
-    .then(listOfWords => this.listOfWords = listOfWords);
+      .getWords()
+      .then(listOfWords => this.listOfWords = listOfWords);
   }
 
   removeWord(word: EngDictionary): void {
